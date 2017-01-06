@@ -72,7 +72,7 @@ namespace DataMining.Transport
 
             //Весь перечень транспортных средств
             List<string> TransportId;
-            TransportId = new List<string>();//k сколько точек
+            TransportId = new List<string>();// сколько точек
             int check = -1;
             for (int i = 0; i<k;i++)
             {
@@ -135,7 +135,7 @@ namespace DataMining.Transport
                         int R = count/5; //cколько интервалов выбираем с наименьшей скоростью, берем серединуу интервала
                         for (int j = 0; j < R; j++)
                         {
-                            double min_speed = speed.Min();// добавить ограничения на индексы типа последний нельзя
+                            double min_speed = speed.Min();//
                             int indexMin = Array.IndexOf(speed, min_speed);
                             // Console.WriteLine(transportToIntarval[indexMin].x);
                             // Console.WriteLine(transportToIntarval[indexMin+1].x);
