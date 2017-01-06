@@ -1,3 +1,5 @@
+#разбивает полученное множество интервалов с наименьшими скоростями
+#на кластеры
 import numpy as np
 import io
 from sklearn.cluster import KMeans
