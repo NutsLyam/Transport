@@ -55,10 +55,11 @@ namespace DataMining.Transport
            
             file.Close();
 
+           
             //Разделили на отрезки, которые будем анализировать
             double start = 11038.08464497;
             double end = 283.08479678;
-            int n = 27;
+            int n = 30;
             double[] X = new double[n];
             X[0] = 11038.08464497;
             X[n-1] = end;
@@ -72,7 +73,7 @@ namespace DataMining.Transport
 
             //Весь перечень транспортных средств
             List<string> TransportId;
-            TransportId = new List<string>();// сколько точек
+            TransportId = new List<string>();//k сколько точек
             int check = -1;
             for (int i = 0; i<k;i++)
             {
@@ -135,7 +136,7 @@ namespace DataMining.Transport
                         int R = count/5; //cколько интервалов выбираем с наименьшей скоростью, берем серединуу интервала
                         for (int j = 0; j < R; j++)
                         {
-                            double min_speed = speed.Min();//
+                            double min_speed = speed.Min();// добавить ограничения на индексы типа последний нельзя
                             int indexMin = Array.IndexOf(speed, min_speed);
                             // Console.WriteLine(transportToIntarval[indexMin].x);
                             // Console.WriteLine(transportToIntarval[indexMin+1].x);
@@ -168,6 +169,29 @@ namespace DataMining.Transport
                     filey.Write(BestPoints[i].x.ToString().Replace(",","."));
                     filey.Write('\t');
                     filey.WriteLine(BestPoints[i].y.ToString().Replace(",", "."));
+
+                }
+            }
+
+            using (System.IO.StreamWriter filex =
+                     new System.IO.StreamWriter(@"C:\\Users\\Наташа\\Documents\\Matlab\\best_pointsx.txt"))
+            {
+                for (int i = 0; i < BestPoints.Count; i++)
+                {
+
+                    filex.WriteLine(BestPoints[i].x.ToString().Replace(",", "."));
+
+
+                }
+            }
+            using (System.IO.StreamWriter filey =
+                   new System.IO.StreamWriter(@"C:\\Users\\Наташа\\Documents\\Matlab\\best_pointsy.txt"))
+            {
+                for (int i = 0; i < BestPoints.Count; i++)
+                {
+
+                    filey.WriteLine(BestPoints[i].y.ToString().Replace(",", "."));
+
 
                 }
             }
